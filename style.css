@@ -1,0 +1,41 @@
+body{
+    text-align: center;
+    background-color: silver;
+}
+
+h1{
+    font-size: 4rem;
+    padding-top: 20px;
+    text-align: center;
+    color:whitesmoke;
+}
+
+.container{
+    display: block;
+    margin: auto;
+}
+
+.btn{
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+    margin: 10px 20px 30px 20px;
+    border: 15px solid black;
+    border-radius: 25%;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green{
+    background-color: green;
+}
+
+.red{
+    background-color: red;
+}
