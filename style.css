@@ -39,3 +39,8 @@ h1{
 .red{
     background-color: red;
 }
+
+.pressedAnimation {
+    box-shadow: 5px 10px darkgray;
+    background-color: grey;
+  }
