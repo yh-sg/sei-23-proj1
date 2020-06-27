@@ -5,30 +5,50 @@ let randomColorArray = [];
 
 let score = -1;
 let gameStart = false;
+let preventSpamClick = false;
 
 let arrayButtonColor = ["yellow", "blue", "red", "green"];
+
+document.querySelector(".container").style.visibility = "hidden";
 
 //Start the game!!! initialize the game
 document.body.addEventListener("keypress", function(){
   if(!gameStart){
-    nextRandomColor();
+    document.querySelector(".container").style.visibility = "visible";
     gameStart = true;
+
+    setTimeout(() => {
+      nextRandomColor();
+    }, 1000);
   }
-})
+
+});
 
 //When clicked, get the color and add into array
+
 let buttons = document.querySelectorAll(".btn");
 
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", function name() {
+
+    if(preventSpamClick){
+      return;
+    }
+
+    preventSpamClick = true;
+
     let chosenColor = this.getAttribute("id");
     chosenColorArray.push(chosenColor);
 
     pressAnimation(chosenColor);
-
-    console.log(chosenColorArray);
+    soundEffect(chosenColor);
+    //console.log(chosenColorArray);
 
     checkPattern(chosenColorArray.length - 1);
+
+    setTimeout(() => {
+      preventSpamClick = false;
+    }, 400);
   });
 }
 
@@ -60,6 +80,7 @@ function nextRandomColor() {
   randomColorArray.push(randomColorSelected);
 
   pressAnimation(randomColorSelected);
+  soundEffect(randomColorSelected);
 }
 
 
@@ -74,7 +95,13 @@ function pressAnimation(chosenColor) {
 }
 
 function reset() {
+  soundEffect("gameover");
   score = -1;
   randomColorArray = [];
   gameStart = false;
+}
+
+function soundEffect(color){
+  let soundEffect = new Audio("soundEffect/" + color +".mp3"); // buffers automatically when created
+  soundEffect.play();
 }
