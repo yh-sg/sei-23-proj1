@@ -16,7 +16,7 @@
 ## Minimum functionality:
 - [x] Have simple animation and sounds when the button was being pressed and randomly selected by the program.
 - [x] Able to play the game continuously until the user press wrong button
-- [x] When game-over, the user is able to restart and start the game again from it's original state
+- [x] When game-over, the user is able to restart and start the game again to it's original state
 - [ ] Record the highest score user has so-far
 
 ## Further:
