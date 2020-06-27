@@ -1,7 +1,7 @@
 # SEI 23 (Project 1 - Simon Game)
 
 ## Game flow:
-1. Player will start the game by clicking any button.
+1. Player will start the game by pressing any keyboard button.
 2. First, the game will flash a random color, player is require to click on the same color. 
 3. After clicking the correct color, one of the button will randomly flash again. Player is require to press the buttons in order.
 4. If the player chose the wrong button, game over.
