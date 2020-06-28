@@ -1,7 +1,7 @@
 # SEI 23 (Project 1 - Simon Game)
 
 ## Game flow:
-1. Player will start the game by clicking any button.
+1. Player will start the game by pressing any keyboard button.
 2. First, the game will flash a random color, player is require to click on the same color. 
 3. After clicking the correct color, one of the button will randomly flash again. Player is require to press the buttons in order.
 4. If the player chose the wrong button, game over.
@@ -16,7 +16,7 @@
 ## Minimum functionality:
 - [x] Have simple animation and sounds when the button was being pressed and randomly selected by the program.
 - [x] Able to play the game continuously until the user press wrong button
-- [x] When game-over, the user is able to restart and start the game again from it's original state
+- [x] When game-over, the user is able to restart and start the game again to it's original state
 - [ ] Record the highest score user has so-far
 
 ## Further:
