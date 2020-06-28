@@ -9,12 +9,12 @@ let preventSpamClick = false;
 
 let arrayButtonColor = ["yellow", "blue", "red", "green"];
 
-document.querySelector(".container").style.visibility = "hidden";
+//document.querySelector(".container").style.visibility = "hidden";
 
 //Start the game!!! initialize the game
 document.body.addEventListener("keypress", function(){
   if(!gameStart){
-    document.querySelector(".container").style.visibility = "visible";
+    //document.querySelector(".container").style.visibility = "visible";
     gameStart = true;
 
     setTimeout(() => {
@@ -23,6 +23,18 @@ document.body.addEventListener("keypress", function(){
   }
 
 });
+
+//difficulty
+let modeSelector = document.querySelectorAll("button");
+
+for (let i = 0; i < modeSelector.length; i++) {
+  modeSelector[i].addEventListener("click", function(){
+    modeSelector[0].classList.remove("selected");
+    modeSelector[1].classList.remove("selected");
+    this.classList.add("selected");
+  })
+  
+}
 
 //When clicked, get the color and add into array
 
@@ -63,8 +75,13 @@ function checkPattern(currentPattern) {
     } 
   }
   else {
-    document.querySelector("#score").innerHTML = "<h1>Game Over! Press any button to start^^</h1>";
+    document.querySelector("#score").innerHTML = "<h1>Game Over! <br> Press any keyboard button to restart.</h1>";
+    document.querySelector("body").classList.add("gameover");
+    setTimeout(() => {
+      document.querySelector("body").classList.remove("gameover");
+    }, 300);
     reset();
+
   }
 }
 

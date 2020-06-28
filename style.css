@@ -1,25 +1,38 @@
+/* *{
+    box-sizing: border-box;
+} */
+
 body{
     text-align: center;
-    background-color: white;
+    margin: 0;
+    background-color: rgb(30, 30, 30);
 }
 
 h1{
-    font-size: 4rem;
-    text-align: center;
-    color:steelblue;
+    font-size: 2rem;
+    color:white;
+    margin: 0;
+    padding: 20px 0;
+    background-color: rgb(12, 187, 6);
+    font-family: 'Press Start 2P', cursive;
+    line-height: 1.6;
 }
 
 .container{
     display: block;
-    margin: auto;
+    margin: 0 auto;
+}
+
+.space{
+    height:30px;
 }
 
 .btn{
-    height: 200px;
-    width: 200px;
+    height: 220px;
+    width: 220px;
     display: inline-block;
-    margin: 10px 20px 30px 20px;
-    border: 15px solid black;
+    margin: 10px;
+   
     border-radius: 25%;
 }
 
@@ -40,6 +53,36 @@ h1{
 }
 
 .pressedAnimation {
-    box-shadow: 5px 10px darkgray;
-    background-color: grey;
+    background-color: rgba(255, 255, 255, 0.5);
   }
+
+.gameover{
+    background-color: maroon;
+    opacity: 0.5;
+}
+
+#difficulty{
+    height: 25px;
+    background-color: white;
+}
+
+span, button{
+    height:100%;
+    font-weight: 800;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgb(12, 187, 6);
+    /* for hover */
+    transition: all 0.5s;
+}
+
+button:hover, .selected{
+    color: white;
+    background-color: rgb(12, 187, 6);
+}
+
+button:focus{
+    outline: none;
+}
