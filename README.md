@@ -7,6 +7,8 @@
 4. If the player choose the wrong button, game over.
 5. The game will keep on adding the pattern and the player is required to press the pattern in order from starting to the end.
 
+![Alt Text](https://media.giphy.com/media/ZEaGW1h33vmjJii3xt/giphy.gif)
+
 ## Project Structure:
 - HTML: Create basic layout for the four Simon Button and text display.
 - CSS: Styling of the buttons, text and background. Animation is also used from CSS with DOM manipulation of CSS by adding/removing classes.
