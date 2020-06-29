@@ -22,9 +22,8 @@
 - [x] Record the highest score user has so-far.
 
 ## Further:
-- Add additional difficulty for the player to choose from. E.g. Backward sequence/More buttons
-- Instead of the normal simon game color, add more color and randomly assigned by the program.
-- 
+- Add additional difficulty for the player to choose from. E.g. Reverse etc...
+- Instead of the normal simon standard game color, add more color and randomly assigned by the program.
 
 ## Reference: 
 #### Simon Game: 
