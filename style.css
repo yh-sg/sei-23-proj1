@@ -32,8 +32,8 @@ h1{
     width: 220px;
     display: inline-block;
     margin: 10px;
-   
     border-radius: 25%;
+    box-shadow: 2px 2px #999;
 }
 
 .yellow{
@@ -53,7 +53,9 @@ h1{
 }
 
 .pressedAnimation {
-    background-color: rgba(255, 255, 255, 0.5);
+    /* Specificity */
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.3);
   }
 
 .gameover{
@@ -75,7 +77,7 @@ span, button{
     letter-spacing: 1.5px;
     color: rgb(12, 187, 6);
     /* for hover */
-    transition: all 0.5s;
+    transition: all 0.7s;
 }
 
 button:hover, .selected{
