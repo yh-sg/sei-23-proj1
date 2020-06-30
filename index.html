@@ -2,36 +2,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Yellowtail&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>SEI-23 GA Project 1</title>
 </head>
 <body>
-    <h1 id="score">The Simon Game!! <br> Choose your mode and press any keyboard buttons to start</h1>
+    <h1 id="score">The Simon Game!! <br> Choose game mode and press any keyboard buttons to start</h1>
 
         <div id="difficulty">
             <span>Game Mode:</span>
             <button>Classic</button>
             <button>Reverse</button>
+            <button>Easy</button>
+            <button>Shuffle</button>
         </div>
 
-        
+        <div id="secondary">
+            <button class="toggle">Click Me!</button>
+            <button class="revert">Revert!</button>
+            <button class="restart">Restart!</button>
+        </div>
 
-    <div class="container">
         <div class="space"></div>
 
-        <div class="row">
+    <div id="container">
             <div class="yellow btn" id="yellow"></div>
-
             <div class="blue btn" id="blue"></div>
-        </div>
-
-        <div class="row">
             <div class="red btn" id="red"></div>
-
             <div class="green btn" id="green"></div>
-        </div>
-
     </div>
 
     <script src="script.js"></script>
