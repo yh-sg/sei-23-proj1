@@ -4,6 +4,10 @@ let randomColorArray = [];
 //let reverseRandomColorArray = [];
 
 let score = -1;
+let classicHighestScore = 0;
+let reverseHighestScore = 0;
+let easyHighestScore = 0;
+let shuffleHighestScore = 0;
 let gameStart = false;
 let preventSpamClick = false;
 let classic = false;
@@ -17,6 +21,7 @@ let arrayButtonColor = ["yellow", "blue", "red", "green"];
 let modeSelector = document.querySelectorAll("button");
 let buttons = document.querySelectorAll(".btn");
 let h1 = document.querySelectorAll("h1");
+let container = document.getElementById("container");
 
 //document.querySelector(".container").style.visibility = "hidden";
 
@@ -126,7 +131,7 @@ function checkPattern(currentPattern) {
 function nextRandomColor() {
   chosenColorArray = []; //Important, reset user pattern for every new input
   score++;
-  
+
   document.querySelector("#score").innerHTML =
     "<h1> The Simon Game!! <br> Score: " + score + "</h1>";
 
@@ -148,13 +153,13 @@ function nextRandomColor() {
       console.log(gameStart);
       setTimeout(() => {
         console.log(gameStart);
-        
+
         pressAnimation(randomColorArray[i]);
         soundEffect(randomColorArray[i]);
       }, i * 500);
       setTimeout(() => {
         gameStart = true;
-        if(shuffle){
+        if (shuffle) {
           shuffleDiv();
         }
       }, randomColorArray.length * 500);
@@ -231,9 +236,9 @@ document.querySelector(".revert").addEventListener("click", function () {
   revertColors();
 });
 
-document.querySelector(".restart").addEventListener("click", function() {
+document.querySelector(".restart").addEventListener("click", function () {
   document.querySelector("#score").innerHTML =
-      "<h1>Restart! <br> Click on the mode and press any keyboard button to restart.</h1>";
+    "<h1>Restart! <br> Click on the mode and press any keyboard button to restart.</h1>";
   reset();
 });
 
@@ -244,12 +249,39 @@ document.querySelector(".restart").addEventListener("click", function() {
 //do the array
 //shuffle it
 
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//       let j = Math.floor(Math.random() * (i + 1));
-//       let temp = array[i];
-//       array[i] = array[j];
-//       array[j] = temp;
-//   }
-//   return array;
-// }
+
+//start from the last element, swap it with a randomly selected element from the whole array (including last)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--)  {
+    // Pick a remaining element
+    let j = Math.floor(Math.random() * (i + 1));
+    
+    // Swap with the current element
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+
+  }
+  return array;
+}
+
+function shuffleDiv() {
+  let elementsArray = Array.prototype.slice.call(document.querySelectorAll(".btn"));
+  elementsArray.forEach(element => {
+    container.removeChild(element);
+  });
+  shuffleArray(elementsArray);
+  elementsArray.forEach(element => {
+    container.appendChild(element);
+  });
+}
+
+let instructionContent = document.querySelector("#modalContent");
+
+document.querySelector(".instruction").addEventListener("click",function () {
+  document.querySelector(".modal").style.display = "block";
+
+  document.querySelector(".close").addEventListener("click", function(e){
+    document.querySelector(".modal").style.display = "none";
+  })
+})
