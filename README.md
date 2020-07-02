@@ -1,4 +1,4 @@
-# SEI 23 (Project 1 - Simon Game)
+# SEI 23 (Project 1 - Simon Game): https://yh-sg.github.io/
 
 ## Game flow:
 1. Player will start the game by pressing any keyboard button.
