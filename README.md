@@ -22,8 +22,10 @@
 - [x] Record the highest score user has so-far.
 
 ## Further:
-- Add additional difficulty for the player to choose from. E.g. Reverse etc...
-- Instead of the normal simon standard game color, add more color and randomly assigned by the program.
+- Added additional difficulty(Reverse, easy, shuffle) for the player to choose from.
+- Instead of the normal simon standard game color, randomize the color for the player.
+- Restart function and beat the score added.
+- Made it to phone responsive website
 
 ## Reference: 
 #### Simon Game: 
