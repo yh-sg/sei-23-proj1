@@ -6,18 +6,62 @@ body{
     text-align: center;
     margin: 0;
     background-color: rgb(30, 30, 30);
+    height: 100%
 }
 
 h1{
-    font-size: 2rem;
+    display: block;
+    font-size: 1.8rem;
     color:white;
-    margin: 0;
+    margin: 0 auto;
     padding: 10px 0;
     background-color: rgb(12, 187, 6);
     font-family: 'Press Start 2P', cursive;
     line-height: 1.6;
 }
 
+span, button{
+    height:100%;
+    font-weight: 800;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #990000;
+    /* for hover */
+    transition: all 1s;
+    font-family: 'Yellowtail', cursive;
+}
+
+button:hover, .selected{
+    margin: 0 7px;
+    color: white;
+    background-color: rgb(12, 187, 6);
+}
+
+button:focus{
+    outline: none;
+}
+
+ul {
+    list-style-type: none;
+    font-family: 'Yellowtail', cursive;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    font-size: 1.5rem;
+}
+
+.footer {
+    display: block;
+    padding: 15px 0;
+    background-color: black;
+    margin-top: 20px;
+    color: crimson;
+    font-family: 'Yellowtail', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 1.5;
+ }
+ 
 #container{
     display: grid;
     margin: 0 auto;
@@ -29,7 +73,13 @@ h1{
 }
 
 .space{
-    height:30px;
+    height:10px;
+    color: whitesmoke;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    position: relative;
+    top:230px;
 }
 
 .btn{
@@ -69,36 +119,13 @@ h1{
 }
 
 #difficulty, #secondary, #instruction{
+    display: block;
     height: 25px;
     background-color: white;
 }
 
-
-
-span, button{
-    height:100%;
-    font-weight: 800;
-    border: none;
-    background: none;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #990000;
-    /* for hover */
-    transition: all 1s;
-    font-family: 'Yellowtail', cursive;
-}
-
-#instruction>.instruction{
+#instruction>button{
     color:#800080;
-}
-
-button:hover, .selected{
-    color: white;
-    background-color: rgb(12, 187, 6);
-}
-
-button:focus{
-    outline: none;
 }
 
 /* The Modal (background) */
@@ -136,10 +163,40 @@ button:focus{
     cursor: pointer;
   }
 
-  ul {
-    list-style-type: none;
-    font-family: 'Yellowtail', cursive;
-    letter-spacing: 2px;
-    line-height: 1.5;
-    font-size: 1.5rem;
-   }
+  /* for phone */
+  @media only screen and (max-width: 570px) {
+    h1{
+        width: 100%;
+        font-size: 1.15rem;
+    }
+    #container{
+        width: 320px;
+    }
+    .btn{
+        height: 140px;
+        width: 140px;
+    }
+    span, button{
+        font-weight: bold;
+        font-size: 0.40rem;
+    }
+    #difficulty, #secondary, #instruction{
+        height: 20px;
+        background-color: black;
+    }
+    .space{
+        font-size: 1.3rem;
+        padding: 0 5px;
+        top:160px;
+        height:10px
+    }
+  }
+
+  /* stomp it to bottom!! */
+  @media only screen and (min-height: 660px) and (max-width: 570px), (min-height: 830px){
+    .footer {
+        position: absolute;
+        bottom:0;
+        width:100%;
+     }
+  }

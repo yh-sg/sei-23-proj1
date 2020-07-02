@@ -1,13 +1,13 @@
 //All global variables
 let chosenColorArray = [];
 let randomColorArray = [];
-//let reverseRandomColorArray = [];
 
 let score = -1;
 let classicHighestScore = 0;
 let reverseHighestScore = 0;
 let easyHighestScore = 0;
 let shuffleHighestScore = 0;
+
 let gameStart = false;
 let preventSpamClick = false;
 let classic = false;
@@ -23,21 +23,17 @@ let buttons = document.querySelectorAll(".btn");
 let h1 = document.querySelectorAll("h1");
 let container = document.getElementById("container");
 
-//document.querySelector(".container").style.visibility = "hidden";
-
 //Start the game!!! initialize the game
 document.body.addEventListener("keypress", function () {
   if (!gameStart && (classic || reverse || easy || shuffle)) {
-    //document.querySelector(".container").style.visibility = "visible";
-    gameStart = true;
-
     setTimeout(() => {
       nextRandomColor();
+      gameStart = true;
     }, 800);
   }
 });
 
-//difficulty
+//difficulty Buttons
 for (let i = 0; i < modeSelector.length; i++) {
   modeSelector[i].addEventListener("click", function () {
     if (
@@ -45,14 +41,14 @@ for (let i = 0; i < modeSelector.length; i++) {
       this.innerText === "REVERSE" ||
       this.innerText === "EASY" ||
       this.innerText === "SHUFFLE"
-    ) {
+    ) 
+    {
       modeSelector[0].classList.remove("selected");
       modeSelector[1].classList.remove("selected");
       modeSelector[2].classList.remove("selected");
       modeSelector[3].classList.remove("selected");
       this.classList.add("selected");
     }
-
     //console.log(this.innerText);
 
     if (this.innerText === "CLASSIC" && score === -1) {
@@ -79,7 +75,32 @@ for (let i = 0; i < modeSelector.length; i++) {
   });
 }
 
-//When clicked, get the color and add into array
+//Secondary buttons
+document.querySelector(".toggle").addEventListener("click", function () {
+  assignRandomColors();
+});
+
+document.querySelector(".revert").addEventListener("click", function () {
+  revertColors();
+});
+
+document.querySelector(".restart").addEventListener("click", function () {
+  document.querySelector("#score").innerHTML =
+    "<h1>Restart!<br> Click on the mode and press any keyboard button to restart.</h1>";
+  reset();
+  soundEffect("restart");
+});
+
+//Game instructions button
+document.querySelector(".instruction").addEventListener("click",function () {
+  document.querySelector(".modal").style.display = "block";
+
+  document.querySelector(".close").addEventListener("click", function(e){
+    document.querySelector(".modal").style.display = "none";
+  });
+});
+
+//When clicked, get the color and add into array,color clicking
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", function name() {
     if (gameStart) {
@@ -94,13 +115,12 @@ for (let i = 0; i < buttons.length; i++) {
 
       pressAnimation(chosenColor);
       soundEffect(chosenColor);
-      //console.log(chosenColorArray);
 
       checkPattern(chosenColorArray.length - 1);
 
       setTimeout(() => {
         preventSpamClick = false;
-      }, 400);
+      }, 450);
     }
   });
 }
@@ -113,15 +133,16 @@ function checkPattern(currentPattern) {
     if (chosenColorArray.length === randomColorArray.length) {
       setTimeout(() => {
         nextRandomColor();
-      }, 400);
+      }, 500);
     }
   } else {
+    highScoreUpdate();
     document.querySelector("#score").innerHTML =
       "<h1>Game Over! <br> Click on the mode and press any keyboard button to restart.</h1>";
     document.querySelector("body").classList.add("gameover");
     setTimeout(() => {
       document.querySelector("body").classList.remove("gameover");
-    }, 400);
+    }, 300);
     reset();
     soundEffect("gameover");
   }
@@ -132,31 +153,46 @@ function nextRandomColor() {
   chosenColorArray = []; //Important, reset user pattern for every new input
   score++;
 
-  document.querySelector("#score").innerHTML =
-    "<h1> The Simon Game!! <br> Score: " + score + "</h1>";
+  // document.querySelector(".space").innerHTML =
+  //   "Score: " + score;
+    document.querySelector(".space").innerHTML =
+      score;
+    if(classic){
+      document.querySelector("#score").innerHTML =
+      `<h1><i class="fas fa-meteor"></i>&nbsp;&nbsp;The Simon Game!!&nbsp;&nbsp;<i class="fas fa-meteor"></i> <br> Score to Beat: ` + classicHighestScore + `</h1>`;
+    }else if(reverse){
+      document.querySelector("#score").innerHTML =
+      `<h1><i class="fas fa-meteor"></i>&nbsp;&nbsp;The Simon Game!!&nbsp;&nbsp;<i class="fas fa-meteor"></i> <br> Score to Beat: ` + reverseHighestScore + `</h1>`;
+    }else if(easy){
+      document.querySelector("#score").innerHTML =
+      `<h1><i class="fas fa-meteor"></i>&nbsp;&nbsp;The Simon Game!!&nbsp;&nbsp;<i class="fas fa-meteor"></i> <br> Score to Beat: ` + easyHighestScore + `</h1>`;
+    }else if(shuffle){
+      document.querySelector("#score").innerHTML =
+      `<h1><i class="fas fa-meteor"></i>&nbsp;&nbsp;The Simon Game!!&nbsp;&nbsp;<i class="fas fa-meteor"></i> <br> Score to Beat: ` + shuffleHighestScore + `</h1>`;
+    }
 
   let randomColor = Math.floor(Math.random() * 4);
   let randomColorSelected = arrayButtonColor[randomColor];
+
   if (classic || easy || shuffle) {
     randomColorArray.push(randomColorSelected);
   } else if (reverse) {
     randomColorArray.unshift(randomColorSelected);
   }
+
   if (classic || reverse) {
     pressAnimation(randomColorSelected);
     soundEffect(randomColorSelected);
   } else {
     gameStart = false;
+
     for (let i = 0; i < randomColorArray.length; i++) {
-      //check true/false
-      //eventlistener
-      console.log(gameStart);
       setTimeout(() => {
         console.log(gameStart);
-
         pressAnimation(randomColorArray[i]);
         soundEffect(randomColorArray[i]);
       }, i * 500);
+
       setTimeout(() => {
         gameStart = true;
         if (shuffle) {
@@ -167,14 +203,13 @@ function nextRandomColor() {
   }
 }
 
-//pressanimation
 function pressAnimation(chosenColor) {
   document.querySelector("#" + chosenColor).classList.add("pressedAnimation");
   setTimeout(function () {
     document
       .querySelector("#" + chosenColor)
       .classList.remove("pressedAnimation");
-  }, 250);
+  }, 300);
 }
 
 function reset() {
@@ -189,6 +224,7 @@ function reset() {
   reverse = false;
   easy = false;
   shuffle = false;
+  document.querySelector(".space").innerHTML = "";
 }
 
 function soundEffect(color) {
@@ -217,9 +253,6 @@ function assignRandomColors() {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].style.backgroundColor = colors[i];
   }
-  // for (let i = 0; i < h1.length; i++) {
-  //   h1[i].style.backgroundColor = colors[0];
-  // }
 }
 
 function revertColors() {
@@ -228,35 +261,25 @@ function revertColors() {
   }
 }
 
-document.querySelector(".toggle").addEventListener("click", function () {
-  assignRandomColors();
-});
-
-document.querySelector(".revert").addEventListener("click", function () {
-  revertColors();
-});
-
-document.querySelector(".restart").addEventListener("click", function () {
-  document.querySelector("#score").innerHTML =
-    "<h1>Restart! <br> Click on the mode and press any keyboard button to restart.</h1>";
-  reset();
-});
-
-//createrandomnum
-//y - 0, r - 1, g -2 , g - 3
-//check the number with the array.
-//if is in it, don't push it, otherwise push until it reach 4
-//do the array
-//shuffle it
-
+function highScoreUpdate(){
+  if(classic&&score>classicHighestScore){
+      classicHighestScore = score; 
+  } else if(reverse && score>=reverseHighestScore){
+    reverseHighestScore = score;
+  }else if(easy && score>=easyHighestScore){
+    easyHighestScore = score;
+  }else if(shuffle && score>=shuffleHighestScore){
+    shuffleHighestScore = score;
+  }
+}
 
 //start from the last element, swap it with a randomly selected element from the whole array (including last)
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--)  {
-    // Pick a remaining element
+    // Target the random index position 
     let j = Math.floor(Math.random() * (i + 1));
     
-    // Swap with the current element
+    // Swap the targeted index with the random index
     let temp = array[i];
     array[i] = array[j];
     array[j] = temp;
@@ -266,7 +289,10 @@ function shuffleArray(array) {
 }
 
 function shuffleDiv() {
+  //array object as a method
+  //With call(), an object can use a method belonging to another object which is the array.
   let elementsArray = Array.prototype.slice.call(document.querySelectorAll(".btn"));
+  console.log(elementsArray);
   elementsArray.forEach(element => {
     container.removeChild(element);
   });
@@ -275,13 +301,3 @@ function shuffleDiv() {
     container.appendChild(element);
   });
 }
-
-let instructionContent = document.querySelector("#modalContent");
-
-document.querySelector(".instruction").addEventListener("click",function () {
-  document.querySelector(".modal").style.display = "block";
-
-  document.querySelector(".close").addEventListener("click", function(e){
-    document.querySelector(".modal").style.display = "none";
-  })
-})

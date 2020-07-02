@@ -3,37 +3,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Yellowtail&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>SEI-23 GA Project 1</title>
+    <script src="https://kit.fontawesome.com/234edda5b4.js" crossorigin="anonymous"></script>
+    <title>SEI-23 GA Project 1 - Simon Game(yonghan)</title>
 </head>
 <body>
-    <h1 id="score">The Simon Game!! <br> Choose game mode and press any keyboard buttons to start</h1>
+    <h1 id="score"><i class="fas fa-balance-scale-right"></i> The Simon Game!! <i class="fas fa-balance-scale-left"></i> <br> Choose game mode and press any keyboard buttons to start</h1>
 
         <div id="difficulty">
-            <span>Game Mode:</span>
-            <button>Classic</button>
-            <button>Reverse</button>
-            <button>Easy</button>
-            <button>Shuffle</button>
+            <span><i class="fas fa-theater-masks"></i>Game Mode:</span>
+            <button><i class="fab fa-angellist"></i>Classic</button>
+            <button><i class="fas fa-angle-double-left"></i>Reverse</button>
+            <button><i class="fas fa-walking"></i>Easy</button>
+            <button><i class="fas fa-random"></i>Shuffle</button>
         </div>
 
         <div id="secondary">
-            <button class="toggle">Click Me!</button>
-            <button class="revert">Revert!</button>
-            <button class="restart">Restart!</button>
+            <button class="toggle"><i class="fab fa-hotjar"></i> Click Me! <i class="fab fa-hotjar"></i></button>
+            <button class="revert"><i class="fas fa-screwdriver"></i> Revert!</button>
+            <button class="restart"><i class="fas fa-redo"></i> Restart!</button>
         </div>
 
         <div id="instruction">
-            <button class="instruction">Game instruction!</button>
+            <button class="instruction"><i class="far fa-question-circle"></i> Game instruction! <i class="far fa-question-circle"></i></button>
         </div>
 
-        <div id="myModal" class="modal">
         <!-- Modal content -->
+        <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                     <ul>
-                        <li><span>Classic:</span> Only the newest color added to the squence plays back. Repeat the whole sequence from start.</li>
-                        <li><span>Reverse:</span> You must play the sequence in reverse!</li>
+                        <span>Rules:</span>
+                        <li><span>Classic:</span> Only the newest color added to the squence plays. Repeat the whole sequence from start.</li>
+                        <li><span>Reverse:</span> Similar to above but play the sequence in reverse!</li>
                         <li><span>Easy:</span> Repeat the sequence that grows by once each round.</li>
                         <li><span>Shuffle:</span> The colors will shuffle after each round.</li>
                     </ul>
@@ -49,6 +52,17 @@
             <div class="red btn" id="red"></div>
             <div class="green btn" id="green"></div>
         </div>
+
+        <div class="footer">
+            <i class="fab fa-google-play icon"></i>
+            &ensp;&ensp;
+            <i class="far fa-envelope icon"></i> 
+            &ensp;&ensp; 
+            <i class="fas fa-paper-plane icon"></i>
+            <br>
+            Simon Game.
+          </div>
+
 
     <script src="script.js"></script>
 </body>
